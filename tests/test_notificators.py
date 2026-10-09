@@ -6,7 +6,8 @@ from __future__ import annotations
 import pytest
 import requests
 
-from listing_watch import notificators
+from listing_watch.notificators import Notificator
+from listing_watch_notificators import notificators
 from tests.mocks import HttpsSessionMock, NtfySessionMock, SmtpMock
 
 
@@ -216,7 +217,7 @@ def test_pushover_send_items_repeats_header_when_split_mid_query(
     ],
 )
 def test_notificators_declare_their_config_fields(
-    notificator: type[notificators.Notificator], expected: list[tuple[str, str, bool, bool, str | None]]
+    notificator: type[Notificator], expected: list[tuple[str, str, bool, bool, str | None]]
 ) -> None:
     """
     Test that each Notificator declares the config keys, labels, required/secret rules and defaults

@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "listing-watch-notificators"
+version = "1.0.0"
+description = "Email, Pushover and ntfy Notificators for Listing Watch."
+readme = "README.md"
+requires-python = ">=3.12"
+keywords = ["listing-watch", "notifications", "ntfy", "pushover", "email"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "listing-watch>=4,<5",
+    "requests>=2.25",
+]
+
+[[project.authors]]
+name = "Jost Prevc"
+email = "jost.prevc@gmail.com"
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+Homepage = "https://github.com/jprevc/listing-watch-notificators"
+Repository = "https://github.com/jprevc/listing-watch-notificators"
+Changelog = "https://github.com/jprevc/listing-watch-notificators/blob/master/CHANGELOG.md"
+
+# The entry-point name is the name Notification Profiles store, so it must never change.
+[project.entry-points."listing_watch.notificators"]
+email = "listing_watch_notificators.notificators:EmailNotificator"
+pushover = "listing_watch_notificators.notificators:PushoverNotificator"
+ntfy = "listing_watch_notificators.notificators:NtfyNotificator"
+
+[dependency-groups]
+dev = ["pytest", "pytest-cov", "pylint", "pre-commit", "black[d]", "mypy", "types-requests"]
+
+[tool.setuptools]
+packages = ["listing_watch_notificators"]
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+
+[tool.black]
+line-length = 120
+
+[tool.pytest.ini_options]
+addopts = "--cov=listing_watch_notificators --cov-report=xml --cov-report=term"
