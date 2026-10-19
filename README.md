@@ -7,6 +7,9 @@ A [Listing Watch](https://github.com/jprevc/listing-watch) Plugin that provides 
 **Email** (Gmail SMTP), **Pushover** and **ntfy**. Install it next to the Core and they appear in the
 Notification Profile form; the Core's public Docker image already includes it.
 
+It lives apart from the Core because the Core ships no Notificators of its own: this package uses
+only the public Plugin interface, so it doubles as a worked example of writing a Notificator Plugin.
+
 ```bash
 pip install "listing-watch-notificators>=1,<2"
 ```
